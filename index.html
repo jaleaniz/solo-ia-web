@@ -6,7 +6,7 @@
   <title>m &gt; M | Menos es Más — SOLO IA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
@@ -64,6 +64,19 @@
       transform: translateY(0);
     }
 
+    /* ── Brand name wordmark: menos Es Más ── */
+    .brand-menos {
+      font-family: 'Caveat', cursive;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: .02em;
+    }
+    .brand-esmas {
+      font-family: 'Comfortaa', cursive;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+
     /* ── Logo mark ── */
     .logo-m   { font-weight: 300; color: var(--gray-l); transition: all .4s ease; }
     .logo-gt  {
@@ -116,6 +129,16 @@
       background: var(--dark); color: var(--white);
     }
 
+    .btn-accent {
+      background: var(--accent); color: var(--dark);
+      padding: .9rem 2.6rem;
+      border-radius: 9999px;
+      font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      transition: all .25s;
+      display: inline-block;
+    }
+    .btn-accent:hover { background: #b8e600; transform: scale(1.03); }
+
     /* ── Accent bar ── */
     .accent-bar {
       display: inline-block;
@@ -125,13 +148,15 @@
       margin-bottom: 1.5rem;
     }
 
-    /* ── Method cards ── */
+    /* ── Method cards (FOCO-PILOTO-ESCALA) ── */
     .method-card {
       border: 1.5px solid #e4e4e7;
       border-radius: 2rem;
       padding: 2.5rem;
       background: var(--off);
       transition: border-color .25s, box-shadow .25s, transform .25s;
+      position: relative;
+      overflow: hidden;
     }
     .method-card:hover {
       border-color: var(--accent);
@@ -149,6 +174,13 @@
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 1.5rem;
       transition: background .25s, color .25s;
+    }
+
+    .method-step-label {
+      font-size: .65rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .5rem;
+      display: block;
     }
 
     /* ── Impact table ── */
@@ -194,6 +226,21 @@
     }
     .collab-card:hover .collab-icon { background: var(--accent); }
 
+    /* ── Problema phrases ── */
+    .problema-phrase {
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .problema-phrase.muted {
+      color: var(--gray-m);
+      font-weight: 300;
+    }
+    .problema-phrase.accent-text {
+      color: var(--accent);
+    }
+
     /* ── Mobile nav toggle ── */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .hamburger span {
@@ -234,10 +281,10 @@
 
     <!-- Desktop links -->
     <div id="desktop-nav" class="flex items-center gap-8">
-      <a href="#manifiesto" class="nav-link">Manifiesto</a>
-      <a href="#metodo"     class="nav-link">Método</a>
-      <a href="#talento"    class="nav-link">Talento</a>
-      <a href="#contacto"   class="btn-dark">Activar equipo</a>
+      <a href="#problema"  class="nav-link">El Problema</a>
+      <a href="#metodo"    class="nav-link">Método</a>
+      <a href="#talento"   class="nav-link">Talento</a>
+      <a href="#contacto"  class="btn-dark">Activar equipo</a>
     </div>
 
     <!-- Hamburger -->
@@ -249,10 +296,10 @@
 
 <!-- Mobile menu -->
 <div id="mobile-menu">
-  <a href="#manifiesto" class="nav-link">Manifiesto</a>
-  <a href="#metodo"     class="nav-link">Método</a>
-  <a href="#talento"    class="nav-link">Talento</a>
-  <a href="#contacto"   class="btn-dark" style="text-align:center">Activar equipo</a>
+  <a href="#problema"  class="nav-link">El Problema</a>
+  <a href="#metodo"    class="nav-link">Método</a>
+  <a href="#talento"   class="nav-link">Talento</a>
+  <a href="#contacto"  class="btn-dark" style="text-align:center">Activar equipo</a>
 </div>
 
 
@@ -267,25 +314,31 @@
     <span class="logo-M"  style="font-size: clamp(5rem, 18vw, 13rem);">M</span>
   </div>
 
-  <p class="text-xs font-bold tracking-[.3em] uppercase mb-8"
-     style="color:var(--gray-m); animation: float-up .9s .15s ease both; opacity:0; animation-fill-mode:both;">
-    Menos es Más
+  <p class="mb-8"
+     style="color:var(--gray-m); animation: float-up .9s .15s ease both; opacity:0; animation-fill-mode:both; font-size:1.1rem;">
+    <span class="brand-menos">menos</span> <span class="brand-esmas" style="font-size:.95rem; letter-spacing:.15em; text-transform:uppercase;">Es Más</span>
   </p>
 
   <h1 class="font-bold tracking-tighter leading-tight max-w-3xl mb-6"
       style="font-size: clamp(2rem,5vw,4rem); animation: float-up .9s .25s ease both; opacity:0; animation-fill-mode:both;">
-    Logra más con menos.<br>
-    <span style="color:var(--gray-l); font-weight:300;">Agilidad real a través de la IA.</span>
+    Si tu empresa no automatiza,<br>
+    <span style="color:var(--gray-l); font-weight:300;">los mejores se van.</span>
   </h1>
 
-  <p class="max-w-xl mb-12 leading-relaxed"
+  <p class="max-w-xl mb-4 leading-relaxed"
      style="color:var(--gray-m); font-size:1.05rem; animation: float-up .9s .38s ease both; opacity:0; animation-fill-mode:both;">
-    La IA no es una herramienta de IT. Es un hábito de supervivencia y un
-    estímulo de crecimiento para tu gente.
+    No es software. Son capacidades.<br>
+    La IA no se instala. <strong style="color:var(--dark);">Se interioriza.</strong>
   </p>
 
-  <div style="animation: float-up .9s .5s ease both; opacity:0; animation-fill-mode:both;">
-    <a href="#metodo" class="btn-outline">Ver el método</a>
+  <p class="max-w-xl mb-12 leading-relaxed"
+     style="color:var(--gray-m); font-size:.95rem; animation: float-up .9s .44s ease both; opacity:0; animation-fill-mode:both;">
+    Activamos la IA en tu equipo: ya.<br>Sin grandes proyectos. Sin fricción. Sin excusas.
+  </p>
+
+  <div class="flex gap-4 flex-wrap justify-center" style="animation: float-up .9s .5s ease both; opacity:0; animation-fill-mode:both;">
+    <a href="#metodo"   class="btn-outline">Ver el método</a>
+    <a href="#contacto" class="btn-accent">Quiero un piloto</a>
   </div>
 
   <!-- Scroll indicator -->
@@ -301,39 +354,38 @@
 </section>
 
 
-<!-- ══════════════════════════════════════ MANIFIESTO ══ -->
-<section id="manifiesto" style="background:var(--dark); color:var(--white);" class="py-32 px-6">
-  <div class="max-w-5xl mx-auto">
+<!-- ══════════════════════════════════════ EL PROBLEMA ══ -->
+<section id="problema" style="background:var(--dark); color:var(--white);" class="py-32 px-6">
+  <div class="max-w-4xl mx-auto">
 
-    <div class="reveal">
+    <div class="reveal mb-16">
       <span class="text-xs font-bold tracking-[.2em] uppercase" style="color:var(--accent);">
-        El Manifiesto
+        El Problema
       </span>
       <div class="accent-bar" style="display:block; margin-top:.75rem;"></div>
     </div>
 
-    <h2 class="reveal font-bold tracking-tighter leading-tight mt-2 mb-16"
-        style="font-size:clamp(2rem,6vw,5rem);">
-      Si la IA no está en tus<br>procesos diarios,
-      <span style="color:var(--gray-m); font-weight:300;"> no está<br>en tu empresa.</span>
-    </h2>
+    <div class="reveal space-y-6 mb-20">
+      <p class="problema-phrase">El mercado se está rompiendo.</p>
+      <p class="problema-phrase muted">La IA no viene a mejorar lo que ya existe.</p>
+      <p class="problema-phrase">Va a crear nuevas formas de existir.</p>
+      <p class="problema-phrase muted">No es una cuestión de tecnología.</p>
+      <p class="problema-phrase accent-text">Es una cuestión de inteligencia: la tuya.</p>
+    </div>
 
     <div class="reveal grid gap-12" style="grid-template-columns: repeat(auto-fit, minmax(260px,1fr));">
       <div>
         <p class="leading-relaxed" style="color:#a1a1aa; font-size:1.05rem;">
           El mercado sufre de <strong style="color:var(--white);">obesidad operativa</strong>.
-          Se acumulan herramientas de IA para tareas triviales mientras los procesos reales
-          siguen siendo lentos, manuales y jerárquicos. Hay un motor de Fórmula 1 en cada
-          escritorio, pero se usa para mantener hábitos obsoletos.
+          Se acumulan herramientas, sistemas, siglas, procesos, manuales, ratios… jerarquías.
+          Se añade complejidad, pero no claridad. Se multiplica la gestión, pero no el avance.
         </p>
       </div>
       <div>
         <p class="leading-relaxed" style="color:#a1a1aa; font-size:1.05rem;">
-          No venimos a instalar software. Venimos a instalar
-          <strong style="color:var(--white);">capacidades</strong>. Reducimos la complejidad
-          técnica y estructural para expandir la libertad creativa de tu equipo. Cuando la IA
-          se convierte en un hábito invisible, el profesional deja de procesar para
-          <em style="color:var(--white);">empezar a crear</em>.
+          Se sigue pensando, trabajando y decidiendo con la misma inercia de siempre.
+          La IA está aquí. Hay que integrarla e interiorizarla.
+          <em style="color:var(--white);">Y lo que no se asimila, se pierde.</em>
         </p>
       </div>
     </div>
@@ -342,18 +394,62 @@
 </section>
 
 
+<!-- ══════════════════════════════════════ EL ENFOQUE ══ -->
+<section style="background:var(--white);" class="py-24 px-6">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="reveal text-center mb-16">
+      <span class="text-xs font-bold tracking-[.2em] uppercase" style="color:var(--gray-m);">
+        Nuestro Enfoque
+      </span>
+      <h2 class="font-bold tracking-tighter mt-4" style="font-size:clamp(2rem,5vw,3.5rem);">
+        No trabajamos la IA<br>
+        <span style="color:var(--gray-l); font-weight:300;">como una herramienta.</span>
+      </h2>
+      <p class="mt-6 max-w-2xl mx-auto leading-relaxed" style="color:var(--gray-m); font-size:1.05rem;">
+        La trabajamos como una <strong style="color:var(--dark);">capacidad</strong>.
+        No añadimos tecnología encima de lo que ya existe.
+        Empezamos por el trabajo real: lo que hace tu equipo cada día,
+        dónde se pierde tiempo, dónde se generan decisiones, dónde se crea valor.
+        Ahí es donde la IA tiene sentido.
+      </p>
+    </div>
+
+    <div class="reveal flex flex-col md:flex-row gap-6 justify-center text-center">
+      <div class="flex-1 py-8 px-6" style="border:1.5px solid #e4e4e7; border-radius:2rem;">
+        <div style="font-size:2rem; margin-bottom:1rem;">🚫</div>
+        <p class="font-bold tracking-tighter mb-2" style="font-size:1.2rem;">No más herramientas</p>
+        <p style="color:var(--gray-m); font-size:.95rem; line-height:1.7;">Dejamos de acumular software sin propósito y empezamos a eliminar fricción.</p>
+      </div>
+      <div class="flex-1 py-8 px-6" style="border:1.5px solid #e4e4e7; border-radius:2rem;">
+        <div style="font-size:2rem; margin-bottom:1rem;">🧠</div>
+        <p class="font-bold tracking-tighter mb-2" style="font-size:1.2rem;">Capacidades reales</p>
+        <p style="color:var(--gray-m); font-size:.95rem; line-height:1.7;">El equipo aprende haciendo, no teorizando. Sobre su propio trabajo.</p>
+      </div>
+      <div class="flex-1 py-8 px-6" style="border:1.5px solid #e4e4e7; border-radius:2rem;">
+        <div style="font-size:2rem; margin-bottom:1rem;">⚡</div>
+        <p class="font-bold tracking-tighter mb-2" style="font-size:1.2rem;">Impacto en días</p>
+        <p style="color:var(--gray-m); font-size:.95rem; line-height:1.7;">No en meses. Un proceso real, un resultado visible, desde el primer momento.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 <!-- ══════════════════════════════════════ MÉTODO ══ -->
-<section id="metodo" class="py-32 px-6" style="background:var(--white);">
+<section id="metodo" class="py-32 px-6" style="background:var(--off);">
   <div class="max-w-7xl mx-auto">
 
     <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
       <div>
         <span class="text-xs font-bold tracking-[.2em] uppercase" style="color:var(--gray-m);">
-          Ecuación de Eficiencia
+          El Método
         </span>
         <h2 class="font-bold tracking-tighter leading-none mt-4"
             style="font-size:clamp(2.2rem,5vw,4rem);">
-          La simplicidad es<br>tu mayor activo.
+          Foco. Piloto. Escala.<br>
+          <span style="color:var(--gray-l); font-weight:300; font-size:clamp(1.4rem,3vw,2.5rem);">En ese orden. Sin saltarse pasos.</span>
         </h2>
       </div>
       <p class="font-bold select-none" aria-hidden="true"
@@ -366,32 +462,49 @@
 
       <div class="method-card">
         <div class="card-num">1</div>
-        <h3 class="font-bold tracking-tighter mb-3" style="font-size:1.5rem;">Menos Ruido</h3>
+        <span class="method-step-label">Foco</span>
+        <h3 class="font-bold tracking-tighter mb-3" style="font-size:1.5rem;">Dónde impacta la IA</h3>
         <p style="color:var(--gray-m); line-height:1.7;">
-          Eliminamos los procesos, flujos, jerarquías y hábitos que no aportan valor real.
-          Limpiamos la operativa desde dentro.
+          Identificamos dónde la IA puede generar impacto real
+          en días, no en meses. Con análisis sencillos, sin diagnósticos
+          interminables ni consultores que alargan el proceso.
         </p>
       </div>
 
       <div class="method-card">
         <div class="card-num">2</div>
-        <h3 class="font-bold tracking-tighter mb-3" style="font-size:1.5rem;">Más Agilidad</h3>
+        <span class="method-step-label">Piloto</span>
+        <h3 class="font-bold tracking-tighter mb-3" style="font-size:1.5rem;">Un proceso real</h3>
         <p style="color:var(--gray-m); line-height:1.7;">
-          Activamos hábitos de uso real en 48 horas. Sin cursos eternos, solo ejecución
-          directa en el trabajo de cada día.
+          Activamos la IA en un proceso concreto, contigo, con tu equipo.
+          Sin cambiar toda la empresa. Sin fricción. El equipo empieza a
+          usarla desde el primer momento, en su trabajo de cada día.
         </p>
       </div>
 
       <div class="method-card">
         <div class="card-num">3</div>
-        <h3 class="font-bold tracking-tighter mb-3" style="font-size:1.5rem;">Mejor Talento</h3>
+        <span class="method-step-label">Escala</span>
+        <h3 class="font-bold tracking-tighter mb-3" style="font-size:1.5rem;">El equipo aprende</h3>
         <p style="color:var(--gray-m); line-height:1.7;">
-          Creamos el entorno que los mejores profesionales desean: uno donde su tiempo
-          vale más que su esfuerzo manual.
+          Lo que funciona se replica. El equipo aplica lo aprendido en
+          nuevos procesos sin depender de terceros ni empezar de cero.
+          Cuando el equipo aprende, la empresa escala.
         </p>
       </div>
 
     </div>
+
+    <div class="reveal mt-12 p-8 text-center" style="background:var(--dark); border-radius:2rem; color:var(--white);">
+      <p class="font-bold mb-2" style="font-size:clamp(1.2rem,3vw,1.8rem);">
+        La IA no escala por tecnología.
+      </p>
+      <p style="color:var(--gray-l); font-size:1.05rem;">
+        Escala por aprendizaje. Por eso no planteamos grandes proyectos ni transformaciones complejas.<br>
+        Un piloto enseña más que cien horas de formación.
+      </p>
+    </div>
+
   </div>
 </section>
 
@@ -402,10 +515,10 @@
 
     <div class="reveal text-center mb-16">
       <span class="text-xs font-bold tracking-[.2em] uppercase" style="color:var(--accent);">
-        Tabla de Impacto
+        La Ecuación
       </span>
       <h2 class="font-bold tracking-tighter mt-4" style="font-size:clamp(2rem,4.5vw,3.5rem);">
-        La ecuación que transforma equipos.
+        Con menos, logramos más.
       </h2>
     </div>
 
@@ -425,15 +538,21 @@
       </div>
 
       <div class="impact-row">
-        <span class="font-bold" style="font-size:1.15rem;">Pérdida de Tiempo</span>
+        <span class="font-bold" style="font-size:1.15rem;">Tiempo Perdido</span>
         <span class="font-bold text-xl px-3" style="color:var(--accent);">&gt;</span>
-        <span class="font-bold text-right" style="font-size:1.15rem;">Eficiencia Real</span>
+        <span class="font-bold text-right" style="font-size:1.15rem;">Capacidad Real</span>
       </div>
 
       <div class="impact-row">
         <span class="font-bold" style="font-size:1.15rem;">Complejidad Técnica</span>
         <span class="font-bold text-xl px-3" style="color:var(--accent);">&gt;</span>
         <span class="font-bold text-right" style="font-size:1.15rem;">Resultados de Negocio</span>
+      </div>
+
+      <div class="impact-row">
+        <span class="font-bold" style="font-size:1.15rem;">Dependencia Externa</span>
+        <span class="font-bold text-xl px-3" style="color:var(--accent);">&gt;</span>
+        <span class="font-bold text-right" style="font-size:1.15rem;">Talento Autónomo</span>
       </div>
 
     </div>
@@ -451,7 +570,7 @@
       </span>
       <h2 class="font-bold tracking-tighter mt-4 mb-14"
           style="font-size:clamp(2rem,5vw,3.5rem);">
-        De capataces a arquitectos.
+        De resolver problemas a construir oportunidades.
       </h2>
     </div>
 
@@ -460,10 +579,15 @@
         "¿Pero esto lo ha hecho la IA?"
       </p>
       <div style="width:3rem; height:3px; background:var(--accent); border-radius:9999px; margin-bottom:1.5rem;"></div>
+      <p class="leading-relaxed mb-4" style="color:#52525b; font-size:1.05rem;">
+        Esta es la pregunta que paraliza equipos enteros. El miedo del responsable a que su equipo
+        sea más eficiente que él. La cultura que penaliza la agilidad en lugar de celebrarla.
+      </p>
       <p class="leading-relaxed mb-8" style="color:#52525b; font-size:1.05rem;">
-        Cambiamos el miedo del responsable por la ambición del líder. La IA no sustituye
-        el mérito; lo <strong>acelera</strong>. Resolvemos la barrera cultural para que tu
-        equipo no oculte su eficiencia, sino que la celebre como una ventaja competitiva.
+        Resolvemos esa barrera. La IA no sustituye el mérito; lo <strong>acelera</strong>.
+        Cuando el conocimiento deja de ser externo y pasa a formar parte del equipo,
+        algo cambia: el profesional deja de procesar para <em style="color:var(--dark);">empezar a crear</em>.
+        Y eso, nadie lo puede quitar.
       </p>
       <div class="flex items-center gap-4">
         <div class="flex" style="margin-left: -4px;">
@@ -493,8 +617,9 @@
         Buscamos Arquitectos<br>de la Simplicidad.
       </h2>
       <p class="mt-4 max-w-xl leading-relaxed" style="color:var(--gray-m);">
-        Socios que entiendan que el valor no está en instalar software, sino en
-        transformar cómo trabajan las personas.
+        Socios que entiendan que el valor no está en instalar software,
+        sino en transformar cómo trabajan las personas.
+        Si eso te suena, hablemos.
       </p>
     </div>
 
@@ -529,7 +654,7 @@
         </h3>
         <p style="color:var(--gray-m); line-height:1.7;">
           Transformar jefes escépticos en líderes de equipos de alto rendimiento.
-          Del control a la confianza, de la burocracia a la velocidad.
+          Del control a la confianza. De la burocracia a la velocidad.
         </p>
       </div>
 
@@ -546,21 +671,28 @@
 
       <!-- Left: brand -->
       <div>
-        <div class="mb-6 select-none" style="font-family:'Comfortaa',cursive; font-size:3rem; line-height:1;">
+        <div class="mb-2 select-none" style="font-family:'Comfortaa',cursive; font-size:3rem; line-height:1;">
           <span style="font-weight:300; color:var(--gray-l);">m</span>
           <span style="font-weight:700; color:var(--accent); margin:0 .2rem;">&gt;</span>
           <span style="font-weight:700; color:var(--white);">M</span>
         </div>
-        <p style="color:var(--gray-m); line-height:1.7; max-width:280px;">
-          Menos recursos. Más impacto.<br>
-          Menos pérdida de tiempo. Más agilidad.<br>
-          Menos jerarquía. Más velocidad.
+        <p class="mb-5 select-none" style="font-size:1.2rem;">
+          <span class="brand-menos" style="color:var(--gray-l);">menos</span>
+          <span class="brand-esmas" style="color:var(--white); font-size:1rem; letter-spacing:.1em; text-transform:uppercase;"> Es Más</span>
+        </p>
+        <p style="color:var(--gray-m); line-height:1.9; max-width:280px;">
+          Menos procesos. Más ideas.<br>
+          Menos dependencia. Más capacidad.<br>
+          Menos ruido. Más impacto.
         </p>
       </div>
 
       <!-- Right: CTA -->
       <div class="flex flex-col items-start md:items-end">
-        <p class="font-bold text-xl mb-4">¿Listo para activar tu equipo?</p>
+        <p class="font-bold text-xl mb-2">¿Listo para el piloto?</p>
+        <p style="color:var(--gray-m); margin-bottom:1.5rem; max-width:280px; text-align:right; font-size:.95rem;">
+          Un proceso real. Tu equipo. Resultados en 48 horas.
+        </p>
         <a href="mailto:hola@menosesmas.ia"
            class="font-bold tracking-tighter leading-none"
            style="font-size:clamp(1.8rem,4.5vw,3.2rem); border-bottom:4px solid var(--accent); color:var(--white); transition:color .2s;"
@@ -575,10 +707,10 @@
     <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8"
          style="border-top:1px solid rgba(255,255,255,.07);">
       <p style="font-size:.65rem; color:rgba(255,255,255,.25); letter-spacing:.14em; text-transform:uppercase; font-weight:700;">
-        © 2026 Menos es Más | El sistema operativo de tu gente
+        © 2026 menos Es Más | El hábito de IA de tu equipo
       </p>
       <p style="font-size:.65rem; color:rgba(255,255,255,.15); letter-spacing:.14em; text-transform:uppercase; font-weight:700;">
-        Elimina lo innecesario.
+        La IA no se ve. Se nota.
       </p>
     </div>
 
@@ -606,9 +738,8 @@
 
   // Reveal on scroll
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // Stagger children if multiple reveals in same parent
         entry.target.style.transitionDelay = '0s';
         entry.target.classList.add('visible');
         observer.unobserve(entry.target);
